@@ -6,15 +6,20 @@ namespace MusicTheoryApp
     {
         public static void Run()
         {
-            var note = GetInputNote();
+            var input = GetInputNote();
+            Note note;
 
-            if (note == null)
+            if (input == null)
             {
                 Console.WriteLine("Must be a valid note.");
             }
             else
             {
-                Console.WriteLine(note);
+                note = new Note(input);
+                Console.Write("Name: " + note.Name);
+                Console.WriteLine(" ");
+                Console.Write("Index: " + note.Index);
+                Console.WriteLine(" ");
             }
 
             Run();
