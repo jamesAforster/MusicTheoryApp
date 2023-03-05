@@ -23,6 +23,12 @@
                 LineBreak();
                 Console.Write("Index: " + note.Index);
                 LineBreak();
+
+                var chordService = new ChordService();
+
+                List<Note> majorChordNotes = chordService.GetMajorChord(note);
+                Console.WriteLine("Notes in Major Chord: ");
+                majorChordNotes.ForEach(note => Console.WriteLine(note.Name + " "));
             }
 
             Run();

@@ -10,5 +10,11 @@
             Name = name;
             Index = Notes.Dictionary.GetValueOrDefault(name);
         }
+
+        public Note(int index)
+        {
+            Name = Notes.Dictionary.FirstOrDefault(note => note.Value == index).Key;
+            Index = index;
+        }
     }
 }
