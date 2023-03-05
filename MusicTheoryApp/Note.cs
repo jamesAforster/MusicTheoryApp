@@ -1,6 +1,6 @@
 ﻿namespace MusicTheoryApp
 {
-    internal class Note
+    public class Note
     {
         public string Name { get; }
         public int Index { get; }

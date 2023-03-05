@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace MusicTheoryApp
 {
-    public static class Extensions
+    public static class StringExtensions
     {
-        public static string SanitiseNote(this string note)
+        public static string Sanitise(this string note)
         {
             return note.Length == 1 ?
                 note[0].ToString().ToUpperInvariant() :
@@ -22,12 +22,22 @@ namespace MusicTheoryApp
                 return false;
             }
 
-            if (!Notes.Dictionary.ContainsKey(note.SanitiseNote()))
+            if (!Notes.Dictionary.ContainsKey(note.Sanitise()))
             {
                 return false;
             }
 
             return true;
+        }
+
+        public static Note? ToNote(this string note)
+        {
+            if (!note.IsValid())
+            {
+                return null;
+            }
+
+            return new Note(note.Sanitise());
         }
     }
 

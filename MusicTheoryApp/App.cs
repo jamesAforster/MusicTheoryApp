@@ -1,42 +1,43 @@
-﻿using System.Diagnostics.Metrics;
-
-namespace MusicTheoryApp
+﻿namespace MusicTheoryApp
 {
     public class App
     {
         public static void Run()
         {
-            var input = GetInputNote();
-            Note note;
+            LineBreak();
+            Console.WriteLine("Enter a note: ");
 
-            if (input == null)
+            Note note = GetInputNote();
+
+            if (note == null)
             {
+                LineBreak();
                 Console.WriteLine("Must be a valid note.");
+                LineBreak();
+                Run();
             }
             else
             {
-                note = new Note(input);
+                LineBreak();
                 Console.Write("Name: " + note.Name);
-                Console.WriteLine(" ");
+                LineBreak();
                 Console.Write("Index: " + note.Index);
-                Console.WriteLine(" ");
+                LineBreak();
             }
 
             Run();
         }
 
-        private static string GetInputNote()
+        private static Note GetInputNote()
         {
-            Console.WriteLine("Enter a note: ");
-
             var input = Console.ReadLine();
 
-            if (!input.IsValid())
-            {
-                return null;
-            }
+            return input.ToNote();
+        }
 
-            return input.SanitiseNote();
+        private static void LineBreak()
+        {
+            Console.WriteLine(" ");
         }
     }
 }
