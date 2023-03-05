@@ -1,0 +1,3 @@
+﻿using MusicTheoryApp;
+
+App.Run();
