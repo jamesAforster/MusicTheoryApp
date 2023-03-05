@@ -15,7 +15,7 @@
             {
                 note,
                 new Note(thirdIndex),
-                new Note(thirdIndex)
+                new Note(fifthIndex)
             };
         }
 
