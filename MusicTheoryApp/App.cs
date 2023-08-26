@@ -27,7 +27,7 @@
                 var chordService = new ChordService();
 
                 List<Note> majorChordNotes = chordService.GetMajorChord(note);
-                Console.WriteLine("Notes in Major Chord: ");
+                Console.WriteLine($"Notes in {note.Name} Major: ");
                 majorChordNotes.ForEach(note => Console.WriteLine(note.Name + " "));
             }
 
