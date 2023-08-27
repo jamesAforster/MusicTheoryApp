@@ -8,13 +8,15 @@ namespace MusicTheoryApp
 {
     public static class StringExtensions
     {
-        public static string Sanitise(this string note)
+        public static Note? ToNote(this string note)
         {
-            return note.Length == 1 ?
-                note[0].ToString().ToUpperInvariant() :
-                note[0].ToString().ToUpperInvariant() + note[1];
-        }
+            if (!note.IsValid())
+            {
+                return null;
+            }
 
+            return new Note(note.Sanitise());
+        }
         public static bool IsValid(this string note)
         {
             if (string.IsNullOrWhiteSpace(note) || note.Length > 2)
@@ -30,14 +32,11 @@ namespace MusicTheoryApp
             return true;
         }
 
-        public static Note? ToNote(this string note)
+        public static string Sanitise(this string note)
         {
-            if (!note.IsValid())
-            {
-                return null;
-            }
-
-            return new Note(note.Sanitise());
+            return note.Length == 1 ?
+                note[0].ToString().ToUpperInvariant() :
+                note[0].ToString().ToUpperInvariant() + note[1];
         }
     }
 
