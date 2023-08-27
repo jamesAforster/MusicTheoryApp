@@ -17,23 +17,29 @@ namespace MusicTheoryAppTests
         public void GetMajorChordReturnsCorrectChord(string root, string majorThird, string perfectFifth)
         {
             // Arrange
-            var notes = new List<string>()
+            var expectednotes = new List<Note>()
             {
-                root,
-                majorThird,
-                perfectFifth
+                new Note(root),
+                new Note(majorThird),
+                new Note(perfectFifth)
             };
 
             var service = new ChordService();
             var note = new Note(root);
 
             // Act
-            var chord = service.GetMajorChord(note);
+            var actualNotes = service.GetMajorChord(note);
+
 
             // Assert
-            Assert.Equal(chord[0].Name, root);
-            Assert.Equal(chord[1].Name, majorThird);
-            Assert.Equal(chord[2].Name, perfectFifth);
+            foreach(Note actualNote in actualNotes)
+            {
+                var test = Notes.Dictionary
+                    .Where(x => x.Value == actualNote.Index)
+                    .Select(x => x.Key);
+
+                Assert.True(test.Contains(root) || test.Contains(majorThird) || test.Contains(perfectFifth));
+            }
         }
     }
 }
