@@ -2,6 +2,7 @@
 {
     public class ChordService
     {
+        int MinorThirdInterval = 3;
         int MajorThirdInterval = 4;
         int PerfectFifthInterval = 7;
 
@@ -9,6 +10,20 @@
         {
             var rootIndex = note.Index;
             var thirdIndex = GetIndex(rootIndex, MajorThirdInterval);
+            var fifthIndex = GetIndex(rootIndex, PerfectFifthInterval);
+
+            return new List<Note>
+            {
+                note,
+                new Note(thirdIndex),
+                new Note(fifthIndex)
+            };
+        }
+
+        public List<Note> GetMinorChord(Note note)
+        {
+            var rootIndex = note.Index;
+            var thirdIndex = GetIndex(rootIndex, MinorThirdInterval);
             var fifthIndex = GetIndex(rootIndex, PerfectFifthInterval);
 
             return new List<Note>

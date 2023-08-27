@@ -23,15 +23,49 @@
                 LineBreak();
                 Console.Write("Index: " + note.Index);
                 LineBreak();
+                Console.WriteLine("Please make a selection: ");
+                Console.WriteLine("1. Major Chord");
+                Console.WriteLine("2. Minor Chord");
+                LineBreak();
 
-                var chordService = new ChordService();
+                var selection = int.TryParse(Console.ReadLine(), out int numberSelection);
 
-                List<Note> majorChordNotes = chordService.GetMajorChord(note);
-                Console.WriteLine($"Notes in {note.Name} Major: ");
-                majorChordNotes.ForEach(note => Console.WriteLine(note.Name + " "));
+                if (numberSelection < 0 || numberSelection > 2)
+                {
+                    LineBreak();
+                    Console.WriteLine("Must be a valid selection.");
+                    LineBreak();
+                    Run();
+                }
+
+                switch (numberSelection)
+                {
+                    case 1:
+                        GetMajorChord(note);
+                        break;
+                    case 2:
+                        GetMinorChord(note);
+                        break;
+                }
             }
 
             Run();
+        }
+
+        public static void GetMajorChord(Note note)
+        {
+            var chordService = new ChordService();
+            List<Note> chordNotes = chordService.GetMajorChord(note);
+            Console.WriteLine($"Notes in {note.Name} Major: ");
+            chordNotes.ForEach(note => Console.WriteLine(note.Name + " "));
+        }
+
+        public static void GetMinorChord(Note note)
+        {
+            var chordService = new ChordService();
+            List<Note> chordNotes = chordService.GetMinorChord(note);
+            Console.WriteLine($"Notes in {note.Name} Major: ");
+            chordNotes.ForEach(note => Console.WriteLine(note.Name + " "));
         }
 
         private static Note GetInputNote()

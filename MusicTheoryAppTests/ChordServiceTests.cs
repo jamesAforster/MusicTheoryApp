@@ -34,11 +34,11 @@ namespace MusicTheoryAppTests
             // Assert
             foreach(Note actualNote in actualNotes)
             {
-                var test = Notes.Dictionary
+                var degreeNotes = Notes.Dictionary
                     .Where(x => x.Value == actualNote.Index)
                     .Select(x => x.Key);
 
-                Assert.True(test.Contains(root) || test.Contains(majorThird) || test.Contains(perfectFifth));
+                Assert.True(degreeNotes.Contains(root) || degreeNotes.Contains(majorThird) || degreeNotes.Contains(perfectFifth));
             }
         }
     }
