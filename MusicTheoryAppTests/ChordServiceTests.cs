@@ -11,19 +11,16 @@ namespace MusicTheoryAppTests
         {
             this.output = output;
         }
-    
+
         [Theory]
-        [InlineData("C", "E", "G")]
-        public void GetMajorChordReturnsCorrectChord(string note1, string note2, string note3)
+        [JsonFileData("major-scale-degrees.json")]
+        public void GetMajorChordReturnsCorrectChord(IEnumerable<object> test)
         {
             // Arrange
             var service = new ChordService();
             var note = new Note("C");
             var notes = new List<string>()
             {
-                note1,
-                note2,
-                note3
             };
 
             // Act
