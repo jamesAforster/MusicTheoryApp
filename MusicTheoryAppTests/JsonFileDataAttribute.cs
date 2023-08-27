@@ -35,9 +35,7 @@ namespace MusicTheoryAppTests
             if (testMethod == null) { throw new ArgumentNullException(nameof(testMethod)); }
 
             // Get the absolute path to the JSON file
-            var path = Path.IsPathRooted(_filePath)
-                ? _filePath
-                : Path.GetRelativePath(Directory.GetCurrentDirectory(), _filePath);
+            var path = Path.GetRelativePath(Directory.GetCurrentDirectory(), _filePath);
 
             if (!File.Exists(path))
             {

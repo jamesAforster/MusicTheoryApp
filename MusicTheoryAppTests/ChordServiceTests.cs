@@ -13,24 +13,27 @@ namespace MusicTheoryAppTests
         }
 
         [Theory]
-        [JsonFileData("major-scale-degrees.json")]
-        public void GetMajorChordReturnsCorrectChord(IEnumerable<object> test)
+        [JsonFileData("scale-degrees.json", "majorChords")]
+        public void GetMajorChordReturnsCorrectChord(string root, string majorThird, string perfectFifth)
         {
             // Arrange
-            var service = new ChordService();
-            var note = new Note("C");
             var notes = new List<string>()
             {
+                root,
+                majorThird,
+                perfectFifth
             };
+
+            var service = new ChordService();
+            var note = new Note(root);
 
             // Act
             var chord = service.GetMajorChord(note);
 
             // Assert
-            for (int i = 0; i < notes.Count; i++)
-            {
-                Assert.Equal(notes[i], chord[i].Name);
-            }
+            Assert.Equal(chord[0].Name, root);
+            Assert.Equal(chord[1].Name, majorThird);
+            Assert.Equal(chord[2].Name, perfectFifth);
         }
     }
 }

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -26,5 +26,9 @@
     <ProjectReference Include="..\MusicTheoryApp\MusicTheoryApp.csproj" />
     <Content Include="xunit.runner.json" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
+
+	<ItemGroup Condition="'$(Configuration)' == 'Debug'">
+		<None Update="scale-degrees.json" CopyToOutputDirectory="PreserveNewest" />
+	</ItemGroup>
 
 </Project>
