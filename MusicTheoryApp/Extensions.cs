@@ -19,12 +19,16 @@ namespace MusicTheoryApp
         }
         public static bool IsValid(this string note)
         {
+            note = note.Trim();
+
             if (string.IsNullOrWhiteSpace(note) || note.Length > 2)
             {
                 return false;
             }
 
-            if (!Notes.Dictionary.ContainsKey(note.Sanitise()))
+            note = note.Sanitise();
+
+            if (!Notes.Dictionary.ContainsKey(note))
             {
                 return false;
             }
