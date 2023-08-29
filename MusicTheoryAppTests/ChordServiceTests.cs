@@ -1,4 +1,5 @@
 using MusicTheoryApp;
+using System.Xml.Linq;
 using Xunit.Abstractions;
 
 namespace MusicTheoryAppTests
@@ -30,16 +31,10 @@ namespace MusicTheoryAppTests
             // Act
             var actualNotes = service.GetMajorChord(note);
 
-
             // Assert
-            foreach(Note actualNote in actualNotes)
-            {
-                var degreeNotes = Notes.Dictionary
-                    .Where(x => x.Value == actualNote.Index)
-                    .Select(x => x.Key);
-
-                Assert.True(degreeNotes.Contains(root) || degreeNotes.Contains(third) || degreeNotes.Contains(fifth));
-            }
+            Assert.True(actualNotes[0].Name.Equals(expectednotes[0].Name) || actualNotes[0].AltName.Equals(expectednotes[0].Name));
+            Assert.True(actualNotes[1].Name.Equals(expectednotes[1].Name) || actualNotes[1].AltName.Equals(expectednotes[1].Name));
+            Assert.True(actualNotes[2].Name.Equals(expectednotes[2].Name) || actualNotes[2].AltName.Equals(expectednotes[2].Name));
         }
 
         [Theory]
@@ -62,14 +57,9 @@ namespace MusicTheoryAppTests
 
 
             // Assert
-            foreach (Note actualNote in actualNotes)
-            {
-                var degreeNotes = Notes.Dictionary
-                    .Where(x => x.Value == actualNote.Index)
-                    .Select(x => x.Key);
-
-                Assert.True(degreeNotes.Contains(root) || degreeNotes.Contains(third) || degreeNotes.Contains(fifth));
-            }
+            Assert.True(actualNotes[0].Name.Equals(expectednotes[0].Name) || actualNotes[0].AltName.Equals(expectednotes[0].Name));
+            Assert.True(actualNotes[1].Name.Equals(expectednotes[1].Name) || actualNotes[1].AltName.Equals(expectednotes[1].Name));
+            Assert.True(actualNotes[2].Name.Equals(expectednotes[2].Name) || actualNotes[2].AltName.Equals(expectednotes[2].Name));
         }
 
         [Theory]
@@ -89,17 +79,13 @@ namespace MusicTheoryAppTests
             var note = new Note(root);
 
             // Act
-            var actualNotes = service.GetMinorSeventhChord(note); 
+            var actualNotes = service.GetMinorSeventhChord(note);
 
             // Assert
-            foreach (Note actualNote in actualNotes)
-            {
-                var degreeNotes = Notes.Dictionary
-                    .Where(x => x.Value == actualNote.Index)
-                    .Select(x => x.Key);
-
-                Assert.True(degreeNotes.Contains(root) || degreeNotes.Contains(third) || degreeNotes.Contains(fifth) || degreeNotes.Contains(seventh));
-            }
+            Assert.True(actualNotes[0].Name.Equals(expectednotes[0].Name) || actualNotes[0].AltName.Equals(expectednotes[0].Name));
+            Assert.True(actualNotes[1].Name.Equals(expectednotes[1].Name) || actualNotes[1].AltName.Equals(expectednotes[1].Name));
+            Assert.True(actualNotes[2].Name.Equals(expectednotes[2].Name) || actualNotes[2].AltName.Equals(expectednotes[2].Name));
+            Assert.True(actualNotes[3].Name.Equals(expectednotes[3].Name) || actualNotes[3].AltName.Equals(expectednotes[3].Name));
         }
     }
 }

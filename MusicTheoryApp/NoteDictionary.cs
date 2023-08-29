@@ -22,5 +22,19 @@
             { "G#", 11 },
             { "Ab", 11 }
         };
+
+        public static Dictionary<string, string> AltNameMapping = new Dictionary<string, string>()
+        {
+            { "A#", "Bb" },
+            { "Bb", "A#" },
+            { "C#", "Db" },
+            { "Db", "C#" },
+            { "D#", "Eb" },
+            { "Eb", "D#" },
+            { "F#", "Gb" },
+            { "Gb", "F#" },
+            { "G#", "Ab" },
+            { "Ab", "G#" }
+        };
     }
 }
