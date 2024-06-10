@@ -34,7 +34,7 @@
 
                 var selection = int.TryParse(Console.ReadLine(), out int numberSelection);
 
-                if (numberSelection < 0 || numberSelection > 3)
+                if (numberSelection < 0 || numberSelection > 6)
                 {
                     LineBreak();
                     Console.WriteLine("Must be a valid selection.");
@@ -88,14 +88,14 @@
         {
             var chordService = new ChordService();
             List<Note> chordNotes = chordService.GetMajorSeventhChord(note);
-            Console.WriteLine($"Notes in {note.Name} Minor Seventh: ");
+            Console.WriteLine($"Notes in {note.Name} Major Seventh: ");
             chordNotes.ForEach(note => Console.WriteLine(note.Name + " "));
         }
         public static void GetDominantSeventhChord(Note note)
         {
             var chordService = new ChordService();
             List<Note> chordNotes = chordService.GetDominantSeventhChord(note);
-            Console.WriteLine($"Notes in {note.Name} Minor Seventh: ");
+            Console.WriteLine($"Notes in {note.Name} Dominant Seventh: ");
             chordNotes.ForEach(note => Console.WriteLine(note.Name + " "));
         }
 
@@ -111,7 +111,7 @@
         {
             var chordService = new ChordService();
             List<Note> chordNotes = chordService.GetDiminishedChord(note);
-            Console.WriteLine($"Notes in {note.Name} Minor Seventh: ");
+            Console.WriteLine($"Notes in {note.Name} Diminished: ");
             chordNotes.ForEach(note => Console.WriteLine(note.Name + " "));
         }
 
