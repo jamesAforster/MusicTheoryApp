@@ -4,6 +4,7 @@
     {
         int MinorThirdSemitoneInterval = 3;
         int MajorThirdSemitoneInterval = 4;
+        int TritoneInterval = 6;
         int PerfectFifthSemitoneInterval = 7;
         int MinorSeventhSemitoneInterval = 10;
         int MajorSemitoneInterval = 11;
@@ -38,7 +39,7 @@
             };
         }
 
-        public List<Note> GetDominanteventhChord(Note note) // i, iii, v, viib
+        public List<Note> GetDominantSeventhChord(Note note) // i, iii, v, viib
         {
             var rootIndex = note.Index;
             var thirdIndex = GetIndex(rootIndex, MajorThirdSemitoneInterval);
@@ -53,6 +54,7 @@
                 new Note(fourthIndex)
             };
         }
+
 
         public List<Note> GetMinorChord(Note note) // i, iib, v
         {
@@ -81,6 +83,20 @@
                 new Note(thirdIndex),
                 new Note(fifthIndex),
                 new Note(fourthIndex)
+            };
+        }
+
+        public List<Note> GetDiminishedChord(Note note) // i, iiib, vb 
+        {
+            var rootIndex = note.Index;
+            var thirdIndex = GetIndex(rootIndex, MinorThirdSemitoneInterval);
+            var fifthIndex = GetIndex(rootIndex, TritoneInterval);
+
+            return new List<Note>
+            {
+                note,
+                new Note(thirdIndex),
+                new Note(fifthIndex)
             };
         }
 
