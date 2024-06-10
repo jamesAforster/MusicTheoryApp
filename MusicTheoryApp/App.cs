@@ -2,8 +2,16 @@
 {
     public class App
     {
-        public static void Run()
+        public ChordService _chordService;
+
+        public App() 
+        { 
+            _chordService = new ChordService();
+        }
+
+        public void Run()
         {
+
             LineBreak();
             Console.WriteLine("Enter a note: ");
 
@@ -68,49 +76,43 @@
             Run();
         }
 
-        public static void GetMajorChord(Note note)
+        public void GetMajorChord(Note note)
         {
-            var chordService = new ChordService();
-            List<Note> chordNotes = chordService.GetMajorChord(note);
+            List<Note> chordNotes = _chordService.GetMajorChord(note);
             Console.WriteLine($"Notes in {note.Name} Major: ");
             chordNotes.ForEach(note => Console.WriteLine(note.Name + " "));
         }
 
-        public static void GetMinorChord(Note note)
+        public void GetMinorChord(Note note)
         {
-            var chordService = new ChordService();
-            List<Note> chordNotes = chordService.GetMinorChord(note);
+            List<Note> chordNotes = _chordService.GetMinorChord(note);
             Console.WriteLine($"Notes in {note.Name} Minor: ");
             chordNotes.ForEach(note => Console.WriteLine(note.Name + " "));
         }
 
-        public static void GetMajorSeventhChord(Note note)
+        public void GetMajorSeventhChord(Note note)
         {
-            var chordService = new ChordService();
-            List<Note> chordNotes = chordService.GetMajorSeventhChord(note);
+            List<Note> chordNotes = _chordService.GetMajorSeventhChord(note);
             Console.WriteLine($"Notes in {note.Name} Major Seventh: ");
             chordNotes.ForEach(note => Console.WriteLine(note.Name + " "));
         }
-        public static void GetDominantSeventhChord(Note note)
+        public void GetDominantSeventhChord(Note note)
         {
-            var chordService = new ChordService();
-            List<Note> chordNotes = chordService.GetDominantSeventhChord(note);
+            List<Note> chordNotes = _chordService.GetDominantSeventhChord(note);
             Console.WriteLine($"Notes in {note.Name} Dominant Seventh: ");
             chordNotes.ForEach(note => Console.WriteLine(note.Name + " "));
         }
 
-        public static void GetMinorSeventhChord(Note note)
+        public void GetMinorSeventhChord(Note note)
         {
-            var chordService = new ChordService();
-            List<Note> chordNotes = chordService.GetMinorSeventhChord(note);
+            List<Note> chordNotes = _chordService.GetMinorSeventhChord(note);
             Console.WriteLine($"Notes in {note.Name} Minor Seventh: ");
             chordNotes.ForEach(note => Console.WriteLine(note.Name + " "));
         }
 
-        public static void GetDiminishedChord(Note note)
+        public void GetDiminishedChord(Note note)
         {
-            var chordService = new ChordService();
-            List<Note> chordNotes = chordService.GetDiminishedChord(note);
+            List<Note> chordNotes = _chordService.GetDiminishedChord(note);
             Console.WriteLine($"Notes in {note.Name} Diminished: ");
             chordNotes.ForEach(note => Console.WriteLine(note.Name + " "));
         }
