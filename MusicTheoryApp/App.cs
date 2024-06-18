@@ -1,4 +1,6 @@
-﻿namespace MusicTheoryApp
+﻿using Spectre.Console;
+
+namespace MusicTheoryApp
 {
     public class App
     {
@@ -15,22 +17,26 @@
         {
 
             LineBreak();
-            Console.WriteLine("Enter a note: ");
+            AnsiConsole.MarkupLine(":musical_score: [bold underline yellow]Liszt Of Notes[/] :musical_score:");
+            LineBreak();
+            LineBreak();
+            Console.WriteLine("Please enter a note.");
+            LineBreak();
 
             Note note = GetInputNote();
+            LineBreak();
 
             if (note == null)
             {
-                LineBreak();
                 Console.WriteLine("Must be a valid note.");
-                LineBreak();
                 Run();
             }
             else
             {
-                Console.WriteLine("Press 1 to get chords: ");
+                AnsiConsole.MarkupLine($"Nice, good note. [bold yellow]{note.Name}[/].");
                 LineBreak();
-                Console.WriteLine("Press 2 to get scales: ");
+                Console.WriteLine($"Press 1 to get chords with a root of {note.Name}: ");
+                Console.WriteLine($"Press 2 to get scales with a root of {note.Name}: ");
                 LineBreak();
 
                 int.TryParse(Console.ReadLine(), out int numberSelection);
@@ -59,10 +65,6 @@
         
         public void GetScale(Note note)
         {
-            Console.Write("Name: " + note.Name);
-            LineBreak();
-            Console.Write("Index: " + note.Index);
-            LineBreak();
             Console.WriteLine("Please make a selection: ");
             Console.WriteLine("1. Major Scale");
             Console.WriteLine("2. Minor Scale");
@@ -149,7 +151,9 @@
         {
             List<Note> scaleNotes = _scaleService.GetMinorScale(note);
             Console.WriteLine($"Notes in {note.Name} Minor: ");
-            scaleNotes.ForEach(note => Console.WriteLine(note.Name + " "));
+            
+            
+            scaleNotes.ForEach(note => Console.Write(note.Name + ", "));
         }
         
         public void GetMajorChord(Note note)
