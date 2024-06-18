@@ -1,5 +1,4 @@
 using MusicTheoryApp;
-using System.Xml.Linq;
 using Xunit.Abstractions;
 
 namespace MusicTheoryAppTests
