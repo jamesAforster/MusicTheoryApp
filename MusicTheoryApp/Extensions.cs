@@ -28,7 +28,7 @@ namespace MusicTheoryApp
 
             note = note.Sanitise();
 
-            if (!Notes.Dictionary.ContainsKey(note))
+            if (!NotesHelper.Dictionary.ContainsKey(note))
             {
                 return false;
             }

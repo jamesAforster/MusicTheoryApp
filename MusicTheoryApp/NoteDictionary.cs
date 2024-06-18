@@ -1,6 +1,6 @@
 ﻿namespace MusicTheoryApp
 {
-    public static class Notes
+    public static class NotesHelper
     {
         public static Dictionary<string, int> Dictionary = new Dictionary<string, int>()
         {
@@ -36,5 +36,14 @@
             { "G#", "Ab" },
             { "Ab", "G#" }
         };
+        
+        public static int GetIndex(int index, int halfSteps)
+        {
+            return index // C
+                + halfSteps > 11 // C + 7 > 11?
+                    ? index + halfSteps - 12
+                    : // 
+                    index + halfSteps;
+        }
     }
 }

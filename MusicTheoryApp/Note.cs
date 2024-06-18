@@ -10,20 +10,20 @@
         public Note(string name)
         {
             Name = name;
-            Index = Notes.Dictionary.GetValueOrDefault(name);
+            Index = NotesHelper.Dictionary.GetValueOrDefault(name);
             AltName = GetAltName();
         }
 
         public Note(int index)
         {
-            Name = Notes.Dictionary.FirstOrDefault(note => note.Value == index).Key;
+            Name = NotesHelper.Dictionary.FirstOrDefault(note => note.Value == index).Key;
             Index = index;
             AltName = GetAltName();
         }
 
         private string GetAltName()
         {
-            Notes.AltNameMapping.TryGetValue(Name, out string? name);
+            NotesHelper.AltNameMapping.TryGetValue(Name, out string? name);
 
             return name ?? "";
         }

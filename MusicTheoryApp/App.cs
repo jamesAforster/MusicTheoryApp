@@ -3,6 +3,7 @@
     public class App
     {
         public ChordService _chordService;
+        public ScaleService _scaleService;
 
         public App() 
         { 

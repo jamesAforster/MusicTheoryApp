@@ -1,19 +1,12 @@
 ﻿namespace MusicTheoryApp
 {
-    public class ChordService
+    public class ChordService : MusicTheoryAppBase
     {
-        int MinorThirdSemitoneInterval = 3;
-        int MajorThirdSemitoneInterval = 4;
-        int TritoneInterval = 6;
-        int PerfectFifthSemitoneInterval = 7;
-        int MinorSeventhSemitoneInterval = 10;
-        int MajorSemitoneInterval = 11;
-
         public List<Note> GetMajorChord(Note note) // i, iii, v
         {
             var rootIndex = note.Index;
-            var thirdIndex = GetIndex(rootIndex, MajorThirdSemitoneInterval);
-            var fifthIndex = GetIndex(rootIndex, PerfectFifthSemitoneInterval);
+            var thirdIndex = NotesHelper.GetIndex(rootIndex, MajorThirdSemitoneInterval);
+            var fifthIndex = NotesHelper.GetIndex(rootIndex, PerfectFifthSemitoneInterval);
 
             return new List<Note>
             {
@@ -26,9 +19,9 @@
         public List<Note> GetMajorSeventhChord(Note note) // i, iii, v, vii
         {
             var rootIndex = note.Index;
-            var thirdIndex = GetIndex(rootIndex, MajorThirdSemitoneInterval);
-            var fifthIndex = GetIndex(rootIndex, PerfectFifthSemitoneInterval);
-            var fourthIndex = GetIndex(rootIndex, MajorSemitoneInterval);
+            var thirdIndex = NotesHelper.GetIndex(rootIndex, MajorThirdSemitoneInterval);
+            var fifthIndex = NotesHelper.GetIndex(rootIndex, PerfectFifthSemitoneInterval);
+            var fourthIndex = NotesHelper.GetIndex(rootIndex, MajorSeventhSemitoneInterval);
 
             return new List<Note>
             {
@@ -42,9 +35,9 @@
         public List<Note> GetDominantSeventhChord(Note note) // i, iii, v, viib
         {
             var rootIndex = note.Index;
-            var thirdIndex = GetIndex(rootIndex, MajorThirdSemitoneInterval);
-            var fifthIndex = GetIndex(rootIndex, PerfectFifthSemitoneInterval);
-            var fourthIndex = GetIndex(rootIndex, MinorSeventhSemitoneInterval);
+            var thirdIndex = NotesHelper.GetIndex(rootIndex, MajorThirdSemitoneInterval);
+            var fifthIndex = NotesHelper.GetIndex(rootIndex, PerfectFifthSemitoneInterval);
+            var fourthIndex = NotesHelper.GetIndex(rootIndex, MinorSeventhSemitoneInterval);
 
             return new List<Note>
             {
@@ -59,8 +52,8 @@
         public List<Note> GetMinorChord(Note note) // i, iib, v
         {
             var rootIndex = note.Index;
-            var thirdIndex = GetIndex(rootIndex, MinorThirdSemitoneInterval);
-            var fifthIndex = GetIndex(rootIndex, PerfectFifthSemitoneInterval);
+            var thirdIndex = NotesHelper.GetIndex(rootIndex, MinorThirdSemitoneInterval);
+            var fifthIndex = NotesHelper.GetIndex(rootIndex, PerfectFifthSemitoneInterval);
 
             return new List<Note>
             {
@@ -73,9 +66,9 @@
         public List<Note> GetMinorSeventhChord(Note note) // i, iib, v, viib
         {
             var rootIndex = note.Index;
-            var thirdIndex = GetIndex(rootIndex, MinorThirdSemitoneInterval);
-            var fifthIndex = GetIndex(rootIndex, PerfectFifthSemitoneInterval);
-            var fourthIndex = GetIndex(rootIndex, MinorSeventhSemitoneInterval);
+            var thirdIndex = NotesHelper.GetIndex(rootIndex, MinorThirdSemitoneInterval);
+            var fifthIndex = NotesHelper.GetIndex(rootIndex, PerfectFifthSemitoneInterval);
+            var fourthIndex = NotesHelper.GetIndex(rootIndex, MinorSeventhSemitoneInterval);
 
             return new List<Note>
             {
@@ -89,8 +82,8 @@
         public List<Note> GetDiminishedChord(Note note) // i, iiib, vb 
         {
             var rootIndex = note.Index;
-            var thirdIndex = GetIndex(rootIndex, MinorThirdSemitoneInterval);
-            var fifthIndex = GetIndex(rootIndex, TritoneInterval);
+            var thirdIndex = NotesHelper.GetIndex(rootIndex, MinorThirdSemitoneInterval);
+            var fifthIndex = NotesHelper.GetIndex(rootIndex, TritoneInterval);
 
             return new List<Note>
             {
@@ -98,15 +91,6 @@
                 new Note(thirdIndex),
                 new Note(fifthIndex)
             };
-        }
-
-        private int GetIndex(int index, int halfSteps)
-        {
-            return index // C
-                + halfSteps > 11 // C + 7 > 11?
-                ? 
-                index + halfSteps - 12 : // 
-                index + halfSteps;
         }
     }
 }
