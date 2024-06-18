@@ -10,12 +10,7 @@ namespace MusicTheoryApp
     {
         public static Note? ToNote(this string note)
         {
-            if (!note.IsValid())
-            {
-                return null;
-            }
-
-            return new Note(note.Sanitise());
+            return !note.IsValid() ? null : new Note(note.Sanitise());
         }
         public static bool IsValid(this string note)
         {

@@ -6,7 +6,7 @@ public abstract class MusicTheoryAppBase
     protected static int MajorSecondSemitoneInterval = 2;
     protected static int MinorThirdSemitoneInterval = 3;
     protected static int MajorThirdSemitoneInterval = 4;
-    protected static int PerfectFourthSemitoneInterval = 4;
+    protected static int PerfectFourthSemitoneInterval = 5;
     protected static int TritoneInterval = 6;
     protected static int PerfectFifthSemitoneInterval = 7;
     protected static int MinorSixthSemitoneInterval = 8;

@@ -12,16 +12,18 @@
             var sixthIndex = NotesHelper.GetIndex(rootIndex, MajorSixthSemitoneInterval);
             var seventhIndex = NotesHelper.GetIndex(rootIndex, MajorSeventhSemitoneInterval);
 
-            return new List<Note>
+            var thing = new List<Note>
             {
                 note,
                 new Note(secondIndex),
-                new Note(fifthIndex),
                 new Note(thirdIndex),
-                new Note(fourthIndex),                
+                new Note(fourthIndex),
+                new Note(fifthIndex),                
                 new Note(sixthIndex),
                 new Note(seventhIndex),
             };
+
+            return thing;
         }
         
         public List<Note> GetMinorScale(Note note) // i, ii, iiib, iv, v, vib, viib
@@ -38,9 +40,9 @@
             {
                 note,
                 new Note(secondIndex),
-                new Note(fifthIndex),
                 new Note(thirdIndex),
-                new Note(fourthIndex),                
+                new Note(fourthIndex),
+                new Note(fifthIndex),                
                 new Note(sixthIndex),
                 new Note(seventhIndex),
             };

@@ -8,6 +8,7 @@
         public App() 
         { 
             _chordService = new ChordService();
+            _scaleService = new ScaleService();
         }
 
         public void Run()
@@ -27,56 +28,130 @@
             }
             else
             {
+                Console.WriteLine("Press 1 to get chords: ");
                 LineBreak();
-                Console.Write("Name: " + note.Name);
-                LineBreak();
-                Console.Write("Index: " + note.Index);
-                LineBreak();
-                Console.WriteLine("Please make a selection: ");
-                Console.WriteLine("1. Major Chord");
-                Console.WriteLine("2. Minor Chord");
-                Console.WriteLine("3. Major Seventh Chord");
-                Console.WriteLine("4. Dominant Seventh Chord");
-                Console.WriteLine("5. Minor Seventh Chord");
-                Console.WriteLine("6. Diminshed Chord");
+                Console.WriteLine("Press 2 to get scales: ");
                 LineBreak();
 
-                var selection = int.TryParse(Console.ReadLine(), out int numberSelection);
+                int.TryParse(Console.ReadLine(), out int numberSelection);
 
-                if (numberSelection < 0 || numberSelection > 6)
+                if (numberSelection < 0 || numberSelection > 2)
                 {
                     LineBreak();
                     Console.WriteLine("Must be a valid selection.");
                     LineBreak();
                     Run();
                 }
-
+                
                 switch (numberSelection)
                 {
                     case 1:
-                        GetMajorChord(note);
+                        GetChord(note);
                         break;
                     case 2:
-                        GetMinorChord(note);
-                        break;
-                    case 3:
-                        GetMajorSeventhChord(note);
-                        break;
-                    case 4:
-                        GetDominantSeventhChord(note);
-                        break;
-                    case 5:
-                        GetMinorSeventhChord(note);
-                        break;
-                    case 6:
-                        GetDiminishedChord(note);
+                        GetScale(note);
                         break;
                 }
             }
 
             Run();
         }
+        
+        public void GetScale(Note note)
+        {
+            Console.Write("Name: " + note.Name);
+            LineBreak();
+            Console.Write("Index: " + note.Index);
+            LineBreak();
+            Console.WriteLine("Please make a selection: ");
+            Console.WriteLine("1. Major Scale");
+            Console.WriteLine("2. Minor Scale");
+            LineBreak();
+            
+            int.TryParse(Console.ReadLine(), out int numberSelection);
 
+            if (numberSelection < 0 || numberSelection > 2)
+            {
+                LineBreak();
+                Console.WriteLine("Must be a valid selection.");
+                LineBreak();
+                Run();
+            }
+
+            switch (numberSelection)
+            {
+                case 1:
+                    GetMajorScale(note);
+                    break;
+                case 2:
+                    GetMinorScale(note);
+                    break;
+            }
+        }
+
+        public void GetChord(Note note)
+        {
+            Console.Write("Name: " + note.Name);
+            LineBreak();
+            Console.Write("Index: " + note.Index);
+            LineBreak();
+            Console.WriteLine("Please make a selection: ");
+            Console.WriteLine("1. Major Chord");
+            Console.WriteLine("2. Minor Chord");
+            Console.WriteLine("3. Major Seventh Chord");
+            Console.WriteLine("4. Dominant Seventh Chord");
+            Console.WriteLine("5. Minor Seventh Chord");
+            Console.WriteLine("6. Diminshed Chord");
+            LineBreak();
+
+            int.TryParse(Console.ReadLine(), out int numberSelection);
+
+            if (numberSelection < 0 || numberSelection > 6)
+            {
+                LineBreak();
+                Console.WriteLine("Must be a valid selection.");
+                LineBreak();
+                Run();
+            }
+
+            switch (numberSelection)
+            {
+                case 1:
+                    GetMajorChord(note);
+                    break;
+                case 2:
+                    GetMinorChord(note);
+                    break;
+                case 3:
+                    GetMajorSeventhChord(note);
+                    break;
+                case 4:
+                    GetDominantSeventhChord(note);
+                    break;
+                case 5:
+                    GetMinorSeventhChord(note);
+                    break;
+                case 6:
+                    GetDiminishedChord(note);
+                    break;
+            }
+        }
+        
+        public void GetMajorScale(Note note)
+        {
+            List<Note> scaleNotes = _scaleService.GetMajorScale(note);
+            Console.WriteLine($"Notes in {note.Name} Major: ");
+            scaleNotes.ForEach(note => Console.WriteLine(note.Name + " "));
+        }
+
+
+        public void GetMinorScale(Note note)
+        {
+            List<Note> scaleNotes = _scaleService.GetMinorScale(note);
+            Console.WriteLine($"Notes in {note.Name} Minor: ");
+            scaleNotes.ForEach(note => Console.WriteLine(note.Name + " "));
+        }
+        
         public void GetMajorChord(Note note)
         {
             List<Note> chordNotes = _chordService.GetMajorChord(note);
