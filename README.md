@@ -1,14 +1,16 @@
 # MusicTheoryApp
 
-Little playaround .net6 console app to fiddle around with, and learn about, music theory stuff.
-
-When run, the app currently just prompts you for a note and provides you the notes of the major chord given that note is the root.
+Little playaround console app to fiddle around with, and learn about, music theory stuff.
 
 ## Possible next steps:
-- Testing
-- Minor chords
-- Extension chords
-- Diminished, suspended, aug chords
+- Testing :white_check_mark:
+- Minor chords :white_check_mark:
+- Diminished chords :white_check_mark:
+- Major/Minor Scales :white_check_mark:
+- Further extensions, suspended, aug chords
+- The concept of octaves :grey_question:
+  - Notes perhaps also have an octave degree designation?
+  - https://viva.pressbooks.pub/openmusictheory/chapter/aspn/
 - Given two notes, returns the interval
 - Given more than two notes in a given sequence, returns the chord (non-contextual)
 - Given a key, provides all the chords in that key

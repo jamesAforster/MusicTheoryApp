@@ -39,11 +39,9 @@
         
         public static int GetIndex(int index, int halfSteps)
         {
-            return index // C
-                + halfSteps > 11 // C + 7 > 11?
-                    ? index + halfSteps - 12
-                    : // 
-                    index + halfSteps;
+            return (index + halfSteps) > 11 // if (note index + halfsteps up) > semitones in 1 octave
+                    ? (index + halfSteps) - 12 // then return the (note index + halfsteps up) - notes in 1 octave, to loop back around
+                    : (index + halfSteps); // else, return (note index + halfsteps up)
         }
     }
 }
